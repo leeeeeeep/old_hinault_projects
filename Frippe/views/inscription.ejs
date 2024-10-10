@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/js/inscription.js"></script>
+    <link rel="stylesheet" href="/css/inscription.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <title>
+        Inscription
+    </title>
+</head>
+<body>
+    <%- include('partials/header.ejs'); %>
+    <div class="container" style="margin-top: 20px;">
+        <h1>Formulaire d'inscription</h1>
+        <h3><%= message %></h3>
+        <form method="POST" action="/inscription">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="req"><br>
+            <label for="mdp">Mot de passe</label>
+            <input type="password" name="mdp" id="mdp" class="req"><br>
+            <label for="conf_mdp">Confirmation mot de passe</label>
+            <input type="password" name="conf_mdp" id="conf_mdp" class="req"><br>
+            <input type="checkbox" name="see" id="seepwd">
+            <label for="seepwd">Afficher mot de passe</label><br><br>
+            <button type="reset">Réinitialiser</button>
+            <button type="submit" name="go" disabled>Confirmer</button>
+        </form>
+        <p>
+            Déjà un compte ?
+            <a href="/connexion">Connecte-toi !</a> 
+        </p>
+    </div>
+</body>
+    <script>
+        document.getElementById("email").value = "<%= email %>";
+        document.getElementById("mdp").value = "<%= mdp %>";
+    </script>
+</html>

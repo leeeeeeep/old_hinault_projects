@@ -1,0 +1,8 @@
+(library
+ (name Lib_interface)
+ (modules Game_interface Interface_info)
+ (libraries Lib_type Lib_message raylib lwt lwt.unix))
+
+(env
+  (dev
+    (flags (:standard -warn-error -26-27-32-33))))

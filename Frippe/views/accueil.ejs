@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/produit.css">
+    <title>
+        Fringues de Clochard - Accueil
+    </title>
+</head>
+<body>
+    <%- include('partials/header.ejs'); %>
+
+    <div class="container-filtre">
+
+        <form action="/" id="form">
+            <label for="selectCategorie">Categorie: </label>
+        <select name="categorie" id="categorie"></select>
+
+        <label for="selectSexe">Sexe: </label>
+        <select name="sexe" id="sexe"></select>
+
+        <label for="selectCouleur">Couleur: </label>
+        <select name="couleur" id="couleur"></select>
+
+        <label for="selectTaille">Taille: </label>
+        <select name="taille" id="taille"></select>
+
+        <label for="selectMatiere">Matiere: </label>
+        <select name="matiere" id="matiere"></select>
+
+        <input type="button" name="" id="filtre-button" onclick="filtrer()" value="Filtrer">
+        </form>
+        
+
+    </div>
+    <div class="container-produit" id="container-produit">
+         
+    </div>
+
+    <script type = "text/javascript" src="js/header.js">
+    </script>
+
+    <script type = "text/javascript" src="js/produit.js">
+    </script>
+
+    <script>  
+      console.log(<%- affiche_combi %> );
+        if(<%- affiche_combi %> != false) {
+            let prod = <%- produits %>;
+            let combi = <%- combinaison %>;
+            affichageCombi(prod, combi);
+        } else {
+          affichageProduit( <%- produits %>, false);
+        }
+      filtrage(<%- types %>);
+    </script>   
+
+
+    <div class="add-container">
+      <a id="linkcombi" href="/addcombinaison">Ajouter une combinaison</a>
+      <a id="linkprod" href="/addproduit">Ajouter un produit</a>
+    </div>
+
+    <script>
+        gerantbouton(<%- gerant %>);
+    </script>
+</body>
+</html>

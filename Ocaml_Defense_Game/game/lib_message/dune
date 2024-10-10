@@ -1,0 +1,8 @@
+(library
+ (name Lib_message)
+ (modules game_message config_reader)
+ (libraries Lib_type yojson lwt str))
+
+ (env
+  (dev
+    (flags (:standard -warn-error -26-32-33))))

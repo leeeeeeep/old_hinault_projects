@@ -1,0 +1,41 @@
+<h1>Formulaire</h1>
+<div class="form">
+  <form id="formPanier">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" class="req"><br>
+    <label for="prenom">Prenom</label>
+    <input type="text" id="prenom" class="req"><br>
+    <label for="adresse">Adresse</label>
+    <input type="text" id="adresse" class="req"><br>
+    <label for="num_tel">Numéro de téléphone</label>
+    <input type="text" id="num_tel" class="req"><br>
+    <label for="mail">Email</label>
+    <input type="email" id="mail" class="req"><br>
+    <label for="livraison">Heure de livraison souhaitée</label>
+    <input type="time" id="livraison" class="req"><br>
+  </form>
+  <script>
+    document.getElementById("nom").value = "<%= nom %>";
+    document.getElementById("prenom").value = "<%= prenom %>";
+    document.getElementById("adresse").value = "<%= adresse %>";
+    document.getElementById("mail").value = "<%= mail %>";
+
+    const nomInput = document.getElementById("nom");
+    if (nomInput.value) {
+      nomInput.disabled = true;
+    }
+    const prenomInput = document.getElementById("prenom");
+    if (prenomInput.value) {
+      prenomInput.disabled = true;
+    }
+    const adresseInput = document.getElementById("adresse");
+    if (adresseInput.value) {
+      adresseInput.disabled = true;
+    }
+    const mailInput = document.getElementById("mail");
+    if (mailInput.value) {
+      mailInput.disabled = true;
+    }
+
+</script>
+</div>

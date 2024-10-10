@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>
+    Fringues de Clochard - Ajout Combinaison
+  </title>
+  <link rel="stylesheet" href="/css/addcombinaison.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <script src=""></script>
+</head>
+<body>
+  
+    <%- include('partials/header.ejs'); %>         
+    <script>
+      console.log(JSON.parse('<%- produits %>'));
+    </script>
+    <script>
+      console.log(<%- types %>);
+  </script>
+
+    <form action="/addCombiToBd" method="POST" id="form" >
+      <input type="text" name="combi" value="" id="text" hidden >
+      <div class="form-combi">
+        <input type="text" name="description"  id="description" value="" placeholder="dexcription">
+        <input type="number" min="0" name="prix" id="prix" value="" placeholder="prix">
+      </div>
+    </form>
+
+      <input type="button" onclick="send()" name="" value="Ajouter à la Base de Données">
+    <script src="/js/addcombinaison.js">
+    </script> 
+    <script>
+      init(<%- produits %>, <%- types %>);
+    </script>
+
+    <div id="wholeCont">
+      
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/page-produit.css">
+    <title>
+        Fringues de Clochard - Ajout Produit
+    </title>
+</head>
+<body>
+    <%- include('partials/header.ejs'); %>
+  
+    <div class="container-page">
+       
+      <div class="info" id="info">
+
+        <div class="couleur" id="couleur">
+          
+        </div>
+
+        <form class="taille-form" id="form" method="post" action="/addProdToBd">
+            <div>
+                <label for="description">Description: </label>
+                <input type="text" name="description" id="description" maxlength="20">
+
+            </div>
+
+            <div>
+                <label for="prix">Prix: </label>
+                <input type="number" id="prix" name="prix" min="0" value="0">
+
+            </div>
+
+            <div>
+                <label for="matiere">Matière: </label>
+                <select name="matiere" id="matiere"></select>    
+            </div>
+
+            <div>
+                <label for="sexe">Sexe: </label>
+                <select name="sexe" id="sexe"></select>    
+            </div>
+            
+
+            <div>
+                <label for="type">Type: </label>
+                <select name="type" id="type"></select>
+
+            </div>
+
+            <div>
+                <input type="button" id="envoi" class="panier-bouton" value="Ajouter le produit" onclick="send()">
+
+            </div>
+            </form>  
+        
+      </div>
+    </div>
+    <div>
+      <p class="description" id="description"></p>
+    </div>
+
+  <script type = "text/javascript" src="/js/addproduit.js">  
+  </script>
+
+  <script>
+    setform(<%- types %>);
+  </script>
+
+</body>
+</html>

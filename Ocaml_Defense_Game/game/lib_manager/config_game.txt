@@ -1,0 +1,8 @@
+time_per_tick: 500;
+time_out_game: 600; 
+standard_wall_price: 50;
+gold_per_tick: 200;
+spawn_rate: 10;
+start_to_spawn: 5;
+board_size: 15;
+limit_tile: 6;

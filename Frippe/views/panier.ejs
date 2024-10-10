@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mon panier</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/js/panier.js"></script>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/panier.css">
+    <link rel="stylesheet" href="/css/formPanier.css">
+  </head>
+  <body>
+    <%- include('partials/header.ejs'); %>
+    <div class="container">
+      <h1>Mon panier</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th>Prix unité</th>
+            <th>Quantité</th>
+            <th class="prix">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let i;
+            let total = 0;
+            for(i = 0; i < tab.length; i++) {
+              let quantite = tab[i].quantite;
+              let quantiteMax = tab[i].quantiteMax
+              if (!gerant) {
+                if (tab[i].quantiteMax === 0) {
+                  quantite = 0;
+                } else if (quantite > tab[i].quantiteMax) {
+                  quantite = tab[i].quantiteMax
+                }
+              } else {
+                quantiteMax = -1;
+              }
+            %>
+              <tr class="article">
+                <td>
+                  <button class="delete-btn">X</button> 
+                  <strong>Produit <%= i+1%></strong><br>
+                  <div class="product-info">
+                    <!-- Image du produit -->
+                    <% if (tab[i].produit.length === 1) { %>
+                      <a href="/produit?id=<%= tab[i].id_article %>">
+                      <img class="product-img"
+                      src="<%= tab[i].img_article%>" alt="/Produits/default.png">
+                      </a>
+                    <% } else { %>
+                      <a href="/combinaison?id=<%= tab[i].id_article %>">
+                      <img class="product-img" 
+                      src="<%= tab[i].img_article%>" alt="/Produits/default.png">
+                      </a>
+                    <% } %>
+                    <span class="description">
+                      <!-- Description de l'article -->
+                      <!-- id_article -->
+                      ID_article : 
+                      <% if (tab[i].produit.length === 1) { %>
+                        <a class="id_article" href="/produit?id=<%= tab[i].id_article %>">
+                          <%= tab[i].id_article %>
+                        </a><br>
+                      <% } else { %>
+                        <a class="id_article" href="/combinaison?id=<%= tab[i].id_article %>">
+                          <%= tab[i].id_article %>
+                        </a><br>
+                      <% } %>
+                      <!-- disponibilité -->
+                      <% if (quantite === 0) { %>
+                        <span style="color: red">Article Indisponible</span><br>
+                      <% } %>
+                      <!-- info produit -->
+                      <% let j;
+                        for(j = 0; j < tab[i].produit.length; j++) { %>
+                          <span class="produit" 
+                                data-indiceStock="<%= tab[i].indiceStock[j] %>">
+                            ID_produit : 
+                            <a class="id_produit" 
+                               href="/produit?id=<%= tab[i].id_produit[j] %>">
+                               <%= tab[i].id_produit[j] %>
+                            </a><br>
+                            [ <%= tab[i].produit[j].stock[tab[i].indiceStock[j]].taille %> ] 
+                            <%= tab[i].produit[j].description %><br>
+                          </span>
+                      <% } %>
+                    </span>
+                  </div>
+                </td>
+                <td class="prix_unite"><%= tab[i].prix_article %> €</td>
+                <td>
+                  max(<span class="quantiteMax"><%= quantiteMax %></span>)
+                  <br>
+                  <button class="decrease">-</button>
+                  <span class="quantity">
+                    <%= quantite %>
+                  </span>
+                  <button class="add">+</button>
+                </td>
+                <td class="prix">
+                  <%= tab[i].prix_article * quantite %> €
+                  <% total = total + (tab[i].prix_article * quantite) %>
+                </td>
+              </tr>
+          <% } %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Total</th>
+            <th style="text-align: right;">
+              <span id="prix_total"><%= total %></span> €
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <% if (!gerant) { %>
+      <%- include('partials/formPanier.ejs'); %>
+        <button id="confirm" disabled>Confirmer le panier</button>
+      <% } else { %>
+        <button id="confirm">Confirmer le panier</button>
+      <% } %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+1- shema de dépendance fonctionnelle
+id -> *
+cover_url -> cover_alt, cover_credit
+address_name -> address_street, address_zipcode, adress_city, lat_lon, transport
+(contact_url, contact_phone, contact_email -> contact_facebook, contact_twitter
+access_link -> access_link_text
+(id, occ_d) -> occ_f
+_________________________________________________________________________________
+
+2- les données fournis ne sont pas en première forme normal, pour obtenir des formes normal :
+- occurences est decomposer dans une tables avec 3 attribus : id, debut et fin ce qui donne pour chaque évènement ces horaires et jours d'ouverture
+- tags est decoposer en une table d'association et une table qui liste les differents tags. 
+-transport n'a pas ete decouper en relation car les donnée était trop dure a normaliser.
+
+Notre modele n'est pas en premiere forme normal a cause des transport.
+Nous n'avons pas su faire la difference entre
+- le metro 14 et les metro (1,4).
+- les bus 12,34,56 et les bus (123,456)
+En couplant notre jeu de donnée avec celui de la RATP il serait possible de pouvoir faire ce genre de distinction.
+Sans compter cet attribut nos données sont en premiere forme normal.
+_________________________________________________________________________________
+
+3- Les données calculables sont :
+address_url_text := address_url
+image_couverture := NULL
+url TEXT := https://www.paris.fr/evenements/titre-id
+date_start := Select min(occurence) where id = X
+date_end := Select max(occurence) where id = X
+_________________________________________________________________________________
+
+4-
+Notre decomposition est en FNBC, les cles candidates sont :
+- id pour info et body
+- cover_url pour cover
+- id, occ_d pour occurence
+- address_name pour address
+- contact_url, contact_phone, contact_email pour contact
+- access_link pour access   
+_________________________________________________________________________________
+
+5- a faire
+
+_________________________________________________________________________________
+
+6- Contraintes :
+Id : Unique not null
+price_type : check value
+access_type : check value
+occ_d : check occ_d < occ_f (symetrique pour occ_f)
+people : chak value
+age_min : age_min > 0 et age_min < age_max (similaire pour age_max)
+_________________________________________________________________________________
+
+7- Les index
+- Sur les clef primaire pour les jointures
+- Sur les occ_d pour pouvoir faire efficacement des recherches avec des dates

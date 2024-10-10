@@ -1,0 +1,10 @@
+(library
+ (name Lib_manager)
+ (modules game_manager)
+ (libraries Lib_type Lib_message yojson Lib_interface lwt.unix lwt unix))
+
+ (env
+  (dev
+    (flags (:standard -warn-error -27-26-32-33))))
+
+

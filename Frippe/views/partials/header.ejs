@@ -1,0 +1,148 @@
+<header class="fond-logo">
+    <div class="menu">
+      <img src="/Icons/menu.png" alt="" class="icon">
+      
+      <div class="option-menu">
+        <div class="choix" id="choix1">
+          <a href="/?sexe=U">Vêtements Unisexe</a>
+          <div class="sub-option" id="sub1">
+            <a href="/?sexe=U&categorie=haut">Haut</a>
+            <a href="/?sexe=U&categorie=haut_couvrant">Haut Couvrant</a>
+            <a href="/?sexe=U&categorie=bas">Bas</a>
+            <a href="/?sexe=U&categorie=accessoire">Accessoire</a>
+            <a href="/?sexe=U&categorie=chaussure">Chaussure</a> 
+          </div>
+        </div>
+        
+        <div class="choix" id="choix2">
+          <a href="/?sexe=F">Vêtements Femme</a>
+            <div class="sub-option" id="sub2">
+              <a href="/?sexe=F&categorie=haut">Haut</a>
+              <a href="/?sexe=F&categorie=haut_couvrant">Haut Couvrant</a>
+              <a href="/?sexe=F&categorie=bas">Bas</a>
+              <a href="/?sexe=F&categorie=accessoire">Accessoire</a>
+              <a href="/?sexe=F&categorie=chaussure">Chaussure</a> 
+            </div>
+        </div>
+
+        <div class="choix" id="choix3">
+          <a href="/?sexe=H">Vêtements Homme</a>
+          <div class="sub-option" id="sub3">
+            <a href="/?sexe=H&categorie=haut">Haut</a>
+            <a href="/?sexe=H&categorie=haut_couvrant">Haut Couvrant</a>
+            <a href="/?sexe=H&categorie=bas">Bas</a>
+            <a href="/?sexe=H&categorie=accessoire">Accessoire</a>
+            <a href="/?sexe=H&categorie=chaussure">Chaussure</a> 
+          </div>
+        </div>
+      
+        <div class="choix" id="choix4">
+          <a href="/?combinaison=true">Combinaisons</a>
+          <div class="sub-option" id="sub4">
+            
+          </div>
+        </div>
+        
+        <div class="choix" id="choix5">
+          <a href="/?categorie=accessoire">Accessoires</a>
+          <div class="sub-option" id="sub5">
+            <a href="/?categorie=haut">Haut</a>
+            <a href="/?categorie=haut_couvrant">Haut Couvrant</a>
+            <a href="/?categorie=bas">Bas</a>
+            <a href="/?categorie=accessoire">Accessoire</a>
+            <a href="/?categorie=chaussure">Chaussure</a> 
+          </div>
+        <div class="choix" id="inscription">
+          <a href="/inscription">Inscription</a>
+        </div>
+        <div class="choix" id="connexion_util">
+          <a href="/connexion">Connexion</a>
+        </div>
+        <div class="choix" id="connexion_gerant">
+          <a href="/gerant">Connexion gérant</a>
+        </div>
+        <div class="choix" id="deconnexion">
+          <a href="/deconnexion">Deconnexion</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="nom" href="/">Fringues de Clochards</a>
+  <div class="icons" style="display: inline">
+    <a href="/utilisateur"><img src="/Icons/user.png" alt="" class="icone-image" style="border-radius: 50%;"></a>
+    <a href="/panier"><img src="/Icons/cart.png" alt="" class="icone-image">
+      <span class="cart-price">0€</span>
+    </a>
+  </div>
+  <div class="center">
+    <form>
+      <input type="text" name="query" class="icone-recherche" value placeholder="Recherche" autocomplete="off">
+    </form>
+    <a href=""></a>
+  </div>
+    <div id="results"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        let query = $("input[name = query]");
+        query.on('input', maj);
+        query.on('blur', function() {
+            $("#results").slideUp("slow");
+        });
+        
+        function maj() {
+          $.get("http://localhost:8081/action/search", 
+            {word : query.val()},
+            function(data) {
+                console.log(data);
+                var liste = $("<ul></ul>");
+                for(let r of data) {
+                  let elem = "<a href=\"/produit?id="+r.id_produit+"\">" +
+                              r.description +
+                              "</a>";
+                  liste.append("<li>"+ elem +"</li>");
+                }
+                $("#results").html(liste);
+                $("#results").slideDown("slow");
+            }, 
+          );
+        }
+
+        $("#results")
+          .on("mouseenter", "li", function() {
+              $(this).css("background-color", "#dd8012",
+               "cursor", "pointer");
+          })
+          .on("mouseleave", "li", function() {
+              $(this).css("background-color", "bisque");
+          }
+        );
+
+        $("#results").on("click", "li", function() {
+          console.log($(this).text());
+          $(this).css("background-color", "red");
+          query.val($(this).text());
+          $("#results").slideUp();
+        });
+
+        // Fonction pour mettre à jour le total du panier avec une requête AJAX
+        function updateTotalPanier() {
+            $.ajax({
+              url: '/totalPrice',  // L'URL de votre route pour obtenir le total du panier
+              method: 'GET',
+              success: function(response) {
+                // Mettre à jour la valeur du total du panier dans la balise HTML
+                $('.cart-price').text(response.total+"€");
+              },
+              error: function(error) {
+                console.log(error);
+              }
+            });
+          }
+
+        // Appeler la fonction au chargement de la page pour afficher le total initial
+        updateTotalPanier();
+      });
+    </script>
+</header>

@@ -1,0 +1,39 @@
+/* Styles de base pour le formulaire */
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form form {
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.form label,
+.form input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Styles pour les écrans plus petits */
+@media screen and (max-width: 600px) {
+    .form form {
+        width: 100%;
+    }
+
+    .form input {
+        width: 100%;
+    }
+}

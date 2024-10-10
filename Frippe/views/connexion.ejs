@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/js/connexion.js"></script>
+    <link rel="stylesheet" href="/css/connexion.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <title>
+        Connexion
+    </title>
+
+</head>
+<body>
+    <%- include('partials/header.ejs'); %>
+    <div class="container">
+        <h1>Page de connexion</h1>
+        <h3><%= message %></h3>
+        <form method="POST" action="/connexion">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="req"><br>
+            <label for="mdp">Mot de passe</label>
+            <input type="password" name="mdp" id="mdp" class="req"><br>
+            <button type="submit" name="go" disabled>Valider</button>
+        </form>
+        <% if (!gerant) { %>
+        <p>
+            Pas encore inscrit ?
+            <a href="/inscription">Appuies ici !</a> 
+        </p>
+        <% } %>
+    </div>
+</body>
+<script>
+    document.getElementById("email").value = "<%= email %>";
+    document.getElementById("mdp").value = "<%= mdp %>";
+</script>
+</html>

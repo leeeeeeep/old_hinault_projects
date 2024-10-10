@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Utilisateur</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/js/utilisateur.js"></script>
+    <link rel="stylesheet" href="/css/utilisateur.css">
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+    <%- include('partials/header.ejs'); %>
+    <h1>Profil</h1>
+    <div id="info">
+        <h2>Informations</h2>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" disabled><br>
+        <button id="modif_mdp">Modifier mot de passe</button> 
+        <span id="notif_modif"></span>
+        <div id="modif_pwd">
+            <button class="save_modif_mdp">Enregistrer</button><br>
+            <label for="actuel_mdp">Mot de passe actuel</label>
+            <input type="password" name="actuel_mdp" id="actuel_mdp"><br>
+            <label for="nv_mdp">Nouveau mot de passe</label>
+            <input type="password" name="nv_mdp" id="nv_mdp">
+        </div><br>
+        <% if (indexadrdefault !== -1) { %>
+            Adresse par défaut : n°
+            <span style="display: inline" id="default_adr">
+                <%= indexadrdefault + 1 %>
+            </span>
+        <% } %>
+    </div>
+    
+    <div id="adrs">
+        <h2>Adresses de livraisons</h2>
+        <button id="ajout_adr">Ajouter un adresse de livraison</button>
+        <!-- ajout dynamique des adresses -->
+        <% let i;
+            for(i = 0; i < adresse.length; i++) {%>
+                <div>
+                    <button class="edit">Editer</button>
+                    <button class="delete">Supprimer</button>
+                    <button class="save">Sauvegarder</button><br>
+                    <span class="nom">Nom : <%= adresse[i].nom %></span>
+                    <span class="prenom">Prenom : <%= adresse[i].prenom %></span>
+                    <span class="adresse">Adresse : <%= adresse[i].adresse %></span>
+                    <% if (i === indexadrdefault) { %>
+                        Adresse par défaut <br>
+                    <% } %>
+                    <label for="default">Mettre par défaut ?</label>
+                    <input type="checkbox" name="default" id="default" class="checkdefault">
+                </div>
+        <% } %>
+        <div id="register">
+            <button class="save_register">Enregistrer</button>
+            <button class="cancel">Annuler</button><br>
+            <label for="nom">Nom : </label>
+            <input type="text" name="nom" id="nom"><br>
+            <label for="prenom">Prenom : </label>
+            <input type="text" name="prenom" id="prenom"><br>
+            <label for="adresse">Adresse : </label>
+            <input type="text" name="adresse" id="adresse"><br>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("email").value = "<%= name %>";
+    </script>
+</body>
+</html>

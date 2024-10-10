@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/page-produit.css">
+    <title>
+        Fringues de Clochard - Page Combinaison
+    </title>
+</head>
+<body>
+    <%- include('partials/header.ejs'); %>
+  
+    <div class="container-page">
+      <div class="photo-produit" id="photo-produit">
+        <img id="photo-combi"  class="photo-produit" src="/Produits/default.png" alt="/Produits/default.png">
+        <input type="button" id="cycle-photo" value="Photo Suivante">
+      </div>  
+
+      <div class="info" id="info">
+
+        <p class="prix" id="prix"></p>
+        <div class="couleur" id="couleur">
+          
+        </div>
+
+        <form class="taille-form" id="form" method="post" action="/updatePanier">
+          <input type="text" name="combi" id="combi" hidden>
+  
+          <label for="quantite">Quantite: </label>
+          <input type="number" name="quantite" value="1" min="1" max="10" id="quantite">
+          
+          <div>
+            <input type="button" id="envoi" class="panier-bouton" value="Ajouter au Panier" onclick="send()"></input>
+          </div>
+        </form>  
+        
+      </div>
+    </div>
+
+    <div id="info-complement">
+      
+    </div>
+
+    <div>
+      <p class="description" id="description"></p>
+    </div>
+
+  <script type = "text/javascript" src="js/page-produit.js">  
+  </script>
+
+  <script type = "text/javascript" src="js/combinaison.js">    
+  </script>
+
+
+  <script>
+    affichageCombinaison(<%- produit %>, <%- combinaison %>)
+  </script>
+
+</body>
+</html>

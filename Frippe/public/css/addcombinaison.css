@@ -1,0 +1,31 @@
+.container-combi {
+  border: solid 1px black;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container-prod {
+  display: block;
+}
+
+.info {
+  margin-top: 90px;
+  min-width: 100px;
+}
+
+.photo {
+  max-height: 40vh;
+  min-width: 10vw;
+  height: 300px;
+  width: 200px;
+  max-width: 200px;
+}
+
+.form-combi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+} 

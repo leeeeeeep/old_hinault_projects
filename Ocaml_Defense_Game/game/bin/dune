@@ -1,0 +1,8 @@
+(executable
+ (public_name game)
+ (name main)
+ (libraries Lib_type raylib Lib_manager))
+
+ (env
+  (dev
+    (flags (:standard -warn-error -26-27-32-33))))

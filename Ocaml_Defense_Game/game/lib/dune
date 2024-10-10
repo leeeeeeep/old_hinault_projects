@@ -1,0 +1,9 @@
+(library
+ (name Lib_type)
+ (modules pion player board prio_file perlin tree)
+ (libraries yojson))
+
+(env
+  (dev
+    (flags (:standard -warn-error -26-27-32-33))))
+

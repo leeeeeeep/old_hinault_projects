@@ -1,0 +1,41 @@
+* {
+    -fx-font: 16px monospaced;
+    -fx-font-smoothing-type: lcd;
+}
+.correct {
+    -fx-fill: green;
+}
+.incorrect {
+    -fx-fill: red;
+}
+.overflow {
+    -fx-underline: true;
+    -fx-fill: red;
+}
+.bonus {
+    -fx-fill: lightblue;
+}
+.bonus-failed-untyped {
+    -fx-fill: #B8860B90;
+}
+.bonus-correct {
+    -fx-fill: steelblue;
+}
+.bonus-failed {
+    -fx-fill: darkgoldenrod;
+}
+.normal {
+    -fx-fill: gray;
+}
+.malus {
+    -fx-fill: #483d8b90;
+}
+.malus-failed-untyped {
+    -fx-fill: #B8860B90;
+}
+.malus-failed {
+    -fx-fill: darkgoldenrod;
+}
+.malus-correct {
+    -fx-fill: darkslateblue;
+}

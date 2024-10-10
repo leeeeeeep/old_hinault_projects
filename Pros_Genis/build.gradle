@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+configurations {
+  testCompile
+}
+
+group 'studio.crbl.genis'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    implementation group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.11.0'
+    implementation 'com.google.code.gson:gson:2.10'
+    implementation 'com.beust:jcommander:1.82'
+    implementation 'org.java-websocket:Java-WebSocket:1.5.3'
+}
+
+javafx {
+    version = "17"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task genis(type: JavaExec) {
+    dependsOn build
+    group = "Execution"
+    description = "Starts Genis"
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'studio.crbl.genis.Genis'
+    standardInput = System.in
+}
+
+task server(type: JavaExec) {
+    dependsOn build
+    group = "Execution"
+    description = "Starts Genis Server"
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'studio.crbl.genis.Server'
+    standardInput = System.in
+}
+
+mainClassName = 'studio.crbl.genis.Genis'

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/page-produit.css">
+
+    <title>
+        Fringues de Clochard - Modification Produit
+    </title>
+</head>
+<body>
+    <%- include('partials/header.ejs'); %>
+
+   
+
+    <div class="container-page">
+        <div class="photo-produit">
+            <img id="photo-prod" class="photo-produit" src="/Produits/default.png" alt="/Produits/default.png">
+        </div>
+        <div class="info" id="info">
+
+            <p class="prix" id="prix"></p>
+            <div class="couleur" id="couleur">
+              
+            </div>
+                <div>
+                    <label for="couleur">Couleur:</label>
+                    <select id="col", class="col">
+                    </select>
+                </div>
+                <div>
+                    <label for="taille">Taille:</label>
+                    <select id="taille">
+                    </select>
+                </div>
+                <div>
+                    <label for="quantite" id="labQ">Quantite:</label>
+                    <input type="number", id="quantite", min="0" placeholder="Quantite" value="10">        
+                </div>
+            
+                <div class="container-form">
+                    <form class="taille-form" id="form" method="post" action="/modifProduitBd">
+                        <input type="text" name="prod" value="" id="prod" hidden>
+                        <input type="number" name="idProduit" value="" id="idProduit" hidden>
+                        <select name="photoPath" id="photo-path"></select>
+                        <div>
+                            <input type="button" id="envoi" onclick="send()" class="panier-bouton" value="Modifier Produit"></input>
+                        </div>
+                    </form>  
+                </div>
+            
+        </div>
+
+
+    </div>
+
+
+    <script type = "text/javascript" src="js/updateProduit.js">
+    </script>
+
+    <script>  
+        console.log(<%- produit %>);
+        console.log(<%- types %>);
+        affichage_modif(<%- produit %>, <%- id %> ,<%- types%>, <%- allPhoto %>);
+    </script>
+
+</body>
+</html>

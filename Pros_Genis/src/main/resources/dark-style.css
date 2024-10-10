@@ -1,0 +1,55 @@
+* {
+    -fx-font: 16px monospaced;
+    -fx-font-smoothing-type: lcd;
+}
+#leftpane * {
+    -fx-fill: #abb2bf;
+}
+#global {
+    -fx-background-color: #282c34;
+    -fx-fill: #abb2bf;
+}
+#text-area {
+    -fx-font-size: 16px;
+    -fx-background-color: #282c34;
+}
+#text-area .caret {
+    -fx-stroke: #abb2bf;
+}
+.correct {
+    -fx-fill: #98c379;
+}
+.incorrect {
+    -fx-fill: #e06c75;
+}
+.overflow {
+    -fx-underline: true;
+    -fx-fill: #e06c75;
+}
+.bonus {
+    -fx-fill: #61afef70;
+}
+.bonus-failed-untyped {
+    -fx-fill: #e5c07b70;
+}
+.bonus-correct {
+    -fx-fill: #61afef;
+}
+.bonus-failed {
+    -fx-fill: #e5c07b;
+}
+.normal {
+    -fx-fill: #abb2bf70;
+}
+.malus {
+    -fx-fill: #c678dd70;
+}
+.malus-failed-untyped {
+    -fx-fill: #e5c07b70;
+}
+.malus-failed {
+    -fx-fill: #e5c07b;
+}
+.malus-correct {
+    -fx-fill: #c678dd;
+}

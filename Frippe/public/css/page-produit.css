@@ -1,0 +1,116 @@
+.container-page {
+  border: solid 3px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 5vw;
+  padding: 4vw;
+  
+}
+
+.photo-produit {
+  width: 20vw;
+  height: 25vw;
+  min-width: 200px;
+  min-height: 300px;
+}
+
+.container-suggestion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5vw;
+  padding: 4vw;
+  border: solid 1px;
+}
+
+.photo-suggestion {
+  width: 15vw;
+  height: 20vw;
+  min-width: 150px;
+  min-height: 200px;
+  margin: 1vw;
+}
+
+.container-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5vw;
+  padding: 4vw;
+  border: solid 1px;
+}
+
+.nom-suggestion, .prix-suggestion {
+  font-size: 1.25em;
+  font-weight: bolder;
+}
+
+
+.couleur {
+  display: flex;
+}
+
+.square {
+  width: 20px;      
+  height: 20px;
+  border: solid 1px;
+  background: linear-gradient(45deg, cyan  30%, rgba(0,0,0,0) 30%), linear-gradient(45deg, yellow 50%, magenta 80%);
+  margin-right: 4px;
+  text-align: center;
+}
+
+div .description {
+  text-align: center;
+  border: solid 1px;
+  padding: 4vw;
+  margin: 5vw;
+}
+
+.info {
+  font-size: 1.25em;
+  padding-left: 20vw;
+}
+
+.prix {
+  font-weight:bolder;
+  font-size: 1.50em;
+}
+
+.panier-bouton, .bouton-suggestion {
+  background-color: rgb(242, 105, 0);
+  margin-top: 2vh;
+  border: 1px solid;
+  border-radius: 40px;
+  padding: 5px;
+}
+
+
+
+.suggestion {
+  border: solid 3px;
+  margin: 1vw;
+  padding: 1vw;
+  border-radius: 10px;
+}
+
+.suggestion div {
+  margin-top: 10px;
+}
+
+.panier-bouton:hover {
+  background-color: #FC8600;
+}
+
+#modif{
+  font-size: small;
+}
+
+
+#info-complement {
+  border: 1px solid;
+  display: block;
+  margin: 5vw;
+  text-align: center;
+}

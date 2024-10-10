@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/page-produit.css">
+    <title>
+        Fringues de Clochard - Accueil
+    </title>
+</head>
+<body>
+    <%- include('partials/header.ejs'); %>
+  
+    <div class="container-page">
+      <div class="photo-produit" id="photo-produit">
+        
+      </div>  
+
+      <div class="info" id="info">
+
+        <p class="prix" id="prix"></p>
+        <div class="couleur" id="couleur">
+          
+        </div>
+          <label for="taille">Taille:</label>
+          <select id="select">
+            
+          </select>
+        <form class="taille-form" id="form" method="post" action="/updatePanier">
+          <input type="text" name="id_produit" id="id_produit" hidden>
+          <input type="text" name="subId"  id="subId" hidden>
+          <input type="text" name="idAcc" id="idAcc" hidden>
+          <input type="text" name="idAccSubId" id="idAccSubId" hidden>
+
+          <label for="quantite" id="labQ">Quantite:</label>
+          <select id="quantite" name="quantite">
+            
+          </select>
+          <div id="bouton-envoi">
+            <input type="submit" id="envoi" class="panier-bouton" value="Ajouter au Panier"></input>
+            <a href="" id="modif">Modifier le Produit</a>
+          </div>
+        </form>  
+        
+      </div>
+    </div>
+    <div>
+      <p class="description" id="description"></p>
+    </div>
+
+    <div class="container-suggestion" id="container-suggestion">
+
+    </div>
+
+  <script type = "text/javascript" src="js/page-produit.js">  
+  </script>
+
+  <script>
+    affichageProduit(<%- produit %>, <%- subId %>, <%- gerant %>, <%- id %>, <%- types %>, <%- allProd %>);
+  </script>
+
+</body>
+</html>
